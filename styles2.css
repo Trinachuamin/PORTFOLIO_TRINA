@@ -1250,3 +1250,245 @@ footer {
     transform: translateY(-2px);
     /* Subtle lift effect */
 }
+
+/* Carousel Styles */
+.carousel-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background-color: #010110;
+    overflow: hidden;
+    color: white;
+    margin-top: 100px;
+    padding: 0 5%;
+    gap: 10px;
+}
+
+.carousel-container img {
+    border-radius: 8px;
+}
+
+.carousel {
+    flex: 3;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.carousel-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.carousel-item.active {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 1;
+}
+
+.carousel-item.slide-out {
+    transform: translateX(-100%);
+    opacity: 0;
+    z-index: 0;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+}
+
+.carousel-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 300px;
+}
+
+.carousel-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.carousel-content p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    padding-left: 5px;
+}
+
+.carousel-button {
+    display: inline-block; /* Makes the link behave like a button */
+    text-decoration: none; /* Removes the default underline */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6340FF; /* Purple background */
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect with glow and animation */
+.carousel-button:hover {
+    background-color: #4e32d4; /* Slightly darker purple */
+    box-shadow: 0 0 30px 5px rgba(99, 64, 255, 0.6); /* Glowing effect */
+}
+
+.carousel-button:hover::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    transform: skewX(-20deg);
+    animation: sh02 0.5s 0s linear;
+}
+
+/* Keyframes for the hover animation */
+@keyframes sh02 {
+    0% {
+        opacity: 0;
+        width: 0;
+        left: 0%;
+    }
+    50% {
+        opacity: 0.5;
+        width: 200%;
+        left: 50%;
+    }
+    100% {
+        opacity: 0;
+        width: 0;
+        left: 100%;
+    }
+}
+
+
+/* Pseudo-element for glowing streak animation */
+.carousel-button::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    transform: skewX(-20deg);
+}
+
+/* Keyframe animation for glowing streak */
+@keyframes sh02 {
+    from {
+        opacity: 0;
+        left: 0%;
+    }
+    50% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        left: 100%;
+    }
+}
+
+
+/* Sidebar Previews */
+.carousel-sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    padding-top: 0px;
+    overflow-y: auto;
+    border-radius: 5px;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+/* Hover effect with glow and animation */
+.sidebar-item:hover {
+    background-color: #6340FF; /* Purple background */
+    color: white;
+    box-shadow: 0 0 30px 5px rgba(99, 64, 255, 0.7); /* Glowing purple shadow */
+}
+
+.sidebar-item:hover::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    transform: skewX(-20deg);
+    animation: sh02 0.5s 0s linear;
+}
+
+/* Active state */
+.sidebar-item.active {
+    background-color: #6340FF;
+    color: white;
+}
+
+/* Image styling */
+.sidebar-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+/* Keyframe animation for glowing streak */
+@keyframes sh02 {
+    from {
+        opacity: 0;
+        left: 0%;
+    }
+    50% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        left: 100%;
+    }
+}
